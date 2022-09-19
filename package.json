@@ -1,0 +1,18 @@
+{
+  "name": "brrr",
+  "version": "0.1.0",
+  "description": "Batch create lnurlw from lnbits",
+  "main": "brrr.js",
+  "scripts": {
+    "run": "node brrr.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bech32": "^2.0.0",
+    "bolt11": "^1.4.0",
+    "qrcode": "^1.5.1"
+  }
+}
