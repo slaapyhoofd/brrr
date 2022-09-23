@@ -1,0 +1,42 @@
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 0 0 27mm;
+    margin: 1mm;
+    height: 30mm;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.box img {
+    width: 25mm;
+    height: 25mm;
+}
+
+p {
+    position: absolute;
+    font-size: 8px;
+    font-family: Consolas, serif;
+    top: 25mm;
+}
+
+@media print {
+    html,
+    body {
+        height: 297mm;
+        width: 210mm;
+    }
+
+    .do-not-print {
+        display: none;
+    }
+}

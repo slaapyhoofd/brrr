@@ -4,15 +4,36 @@
   "description": "Batch create lnurlw from lnbits",
   "main": "brrr.js",
   "scripts": {
-    "run": "node brrr.js"
+    "build": "webpack --env prod --mode production",
+    "dev": "webpack-dev-server --mode development"
   },
-  "type": "module",
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bech32": "^2.0.0",
-    "bolt11": "^1.4.0",
-    "qrcode": "^1.5.1"
+    "notyf": "^3.10.0",
+    "qrcode": "^1.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@types/w3c-web-nfc": "^1.0.0",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.7.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.8.2",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   }
 }
