@@ -1,11 +1,11 @@
 import { createWallet } from './create';
-import { IParametersBatch, IParametersLnurl, IWalletInfo } from '../interfaces';
+import { IParametersBatch, IParametersLnurlW, IWalletInfo } from '../interfaces';
 import * as QRCode from 'qrcode';
 import ProxyHandler from '../util/post';
 
 export async function brrr(
   parametersBatch: IParametersBatch,
-  parametersLnurl: IParametersLnurl,
+  parametersLnurl: IParametersLnurlW,
 ): Promise<IWalletInfo[]> {
   const { baseUrl, numberOfWallets, namePrefix, proxyUrl } = parametersBatch;
   const proxyHandler = new ProxyHandler(baseUrl, proxyUrl);

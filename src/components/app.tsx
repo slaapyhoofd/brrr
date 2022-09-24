@@ -8,7 +8,8 @@ import { brrr } from '../batch/brrr';
 import { Header } from './header';
 import { DefaultAppState } from '../defaults';
 import { ParametersBatch } from './parametersBatch';
-import { ParametersLnurl } from './parametersLnurl';
+import { ParametersLnurlW } from './parametersLnurlW';
+import { ParametersLnurlP } from './parametersLnurlP';
 
 export default class App extends React.Component<any, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
@@ -23,8 +24,14 @@ export default class App extends React.Component<any, IAppState> {
   }
 
   public render() {
-    const { currentWallet, currentWalletIndex, parametersBatch, parametersLnurl, wallets } =
-      this.state;
+    const {
+      currentWallet,
+      currentWalletIndex,
+      parametersBatch,
+      parametersLnurlP,
+      parametersLnurlW,
+      wallets,
+    } = this.state;
 
     const next = () =>
       currentWalletIndex === wallets.length - 1
@@ -49,9 +56,15 @@ export default class App extends React.Component<any, IAppState> {
               this.setState({ wallets: w, currentWallet: w[currentWalletIndex] })
             }
           />
-          <ParametersLnurl
-            parameters={parametersLnurl}
-            updateParameters={(p) => this.setState({ parametersLnurl: p })}
+          <ParametersLnurlW
+            enabled={parametersBatch.lnurlWEnabled}
+            parameters={parametersLnurlW}
+            updateParameters={(p) => this.setState({ parametersLnurlW: p })}
+          />
+          <ParametersLnurlP
+            enabled={parametersBatch.lnurlPEnabled}
+            parameters={parametersLnurlP}
+            updateParameters={(p) => this.setState({ parametersLnurlP: p })}
           />
           <Wallet
             wallet={currentWallet}
@@ -67,9 +80,9 @@ export default class App extends React.Component<any, IAppState> {
 
   private async brrr() {
     try {
-      const { parametersLnurl, parametersBatch, currentWalletIndex } = this.state;
+      const { parametersLnurlW, parametersBatch, currentWalletIndex } = this.state;
       this.setState({ batchRunning: true });
-      const wallets = await brrr(parametersBatch, parametersLnurl);
+      const wallets = await brrr(parametersBatch, parametersLnurlW);
       this.setState({
         batchRunning: false,
         wallets,

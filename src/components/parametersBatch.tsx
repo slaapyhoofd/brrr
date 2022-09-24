@@ -4,6 +4,7 @@ import { Field } from './field';
 import { FileUpload } from './upload';
 import { FileDownload } from './download';
 import { safeParseInt } from '../util/parse';
+import { Checkbox } from './checkbox';
 
 interface IParametersBatchProps {
   parameters: IParametersBatch;
@@ -21,7 +22,16 @@ export const ParametersBatch = ({
   updateParameters,
   updateWallets,
 }: IParametersBatchProps) => {
-  const { adminId, baseUrl, namePrefix, numberOfWallets, readKey } = parameters;
+  const {
+    adminId,
+    baseUrl,
+    namePrefix,
+    lndHubEnabled,
+    lnurlPEnabled,
+    lnurlWEnabled,
+    numberOfWallets,
+    readKey,
+  } = parameters;
 
   return (
     <article>
@@ -66,6 +76,24 @@ export const ParametersBatch = ({
           <FileUpload id="upload" label="Upload wallets" onUpload={(d) => updateWallets(d)} />
         </div>
       </div>
+      <Checkbox
+        id="lnurlWEnabled"
+        label="Create a link to pay with the card"
+        value={lnurlWEnabled}
+        onChange={(v) => updateParameters({ ...parameters, lnurlWEnabled: v })}
+      />
+      <Checkbox
+        id="lnurlPEnabled"
+        label="Create a link to top up the card"
+        value={lnurlPEnabled}
+        onChange={(v) => updateParameters({ ...parameters, lnurlPEnabled: v })}
+      />
+      <Checkbox
+        id="lndHubEnabled"
+        label="Create a link to import the wallet in e.g. BlueWallet"
+        value={lndHubEnabled}
+        onChange={(v) => updateParameters({ ...parameters, lndHubEnabled: v })}
+      />
       <footer>
         <div className="grid">
           <FileDownload

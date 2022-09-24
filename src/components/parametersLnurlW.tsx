@@ -1,18 +1,27 @@
 import * as React from 'react';
-import { IParametersLnurl } from '../interfaces';
+import { IParametersLnurlW } from '../interfaces';
 import { Field } from './field';
 import { safeParseInt } from '../util/parse';
 
 interface IParametersLnurlProps {
-  parameters: IParametersLnurl;
-  updateParameters(parameters: IParametersLnurl): void;
+  enabled: boolean;
+  parameters: IParametersLnurlW;
+  updateParameters(parameters: IParametersLnurlW): void;
 }
 
-export const ParametersLnurl = ({ parameters, updateParameters }: IParametersLnurlProps) => {
+export const ParametersLnurlW = ({
+  enabled,
+  parameters,
+  updateParameters,
+}: IParametersLnurlProps) => {
+  if (!enabled) {
+    return null;
+  }
+
   const { max_withdrawable, min_withdrawable, title, uses, wait_time, webhook_url } = parameters;
   return (
     <article>
-      <header>Card parameters</header>
+      <header>Parameters for paying with the cards</header>
       <Field
         id="title"
         label="Message when paying with the card"
