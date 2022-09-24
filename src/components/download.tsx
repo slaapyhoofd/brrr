@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 export interface IFileDownloadProps {
-  fileName: string;
   caption: string;
   data: any;
+  disabled: boolean;
+  fileName: string;
 }
 
-export const FileDownload = ({ fileName, caption, data }: IFileDownloadProps) => {
+export const FileDownload = ({ caption, data, disabled, fileName }: IFileDownloadProps) => {
   const jsonFileDownload = () => {
     const jsonData = new Blob([JSON.stringify(data, null, 2)], { type: 'text/json' });
     const jsonURL = window.URL.createObjectURL(jsonData);
@@ -18,5 +19,9 @@ export const FileDownload = ({ fileName, caption, data }: IFileDownloadProps) =>
     document.body.removeChild(link);
   };
 
-  return <button onClick={jsonFileDownload}>{caption}</button>;
+  return (
+    <button onClick={jsonFileDownload} disabled={disabled}>
+      {caption}
+    </button>
+  );
 };

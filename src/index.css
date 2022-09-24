@@ -22,7 +22,7 @@
     height: 25mm;
 }
 
-p {
+.box-tag {
     position: absolute;
     font-size: 8px;
     font-family: Consolas, serif;

@@ -1,15 +1,19 @@
 export interface IAppState {
-  adminId?: string;
-  baseUrl: string;
   batchRunning: boolean;
   currentWallet?: IWalletInfo;
   currentWalletIndex: number;
+  parametersBatch: IParametersBatch;
+  wallets: IWalletInfo[];
+  writing: boolean;
+}
+
+export interface IParametersBatch {
+  adminId?: string;
+  baseUrl: string;
   namePrefix: string;
   numberOfWallets: number;
   proxyUrl: string;
   readKey?: string;
-  wallets: IWalletInfo[];
-  writing: boolean;
 }
 
 export interface IWalletInfo {

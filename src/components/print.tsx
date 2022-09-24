@@ -11,8 +11,8 @@ export const Print = ({ wallets }: IPrintProps): JSX.Element => (
       {wallets.map((w, i) => (
         <div className="column" key={`wallet-${i}`}>
           <div className="box">
-            <img alt={w.walletName} src={w.adminUrlLndHubQR} />
-            <p>{w.walletName}</p>
+            <img alt={w.walletName} src={w.adminUrlLndHubQR} className="box-img" />
+            <p className="box-tag">{w.walletName}</p>
           </div>
         </div>
       ))}

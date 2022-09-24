@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Notyf } from 'notyf';
 import { IAppState } from '../interfaces';
 import { ErrorReason, LnurlWriter } from '../util/lnurlwriter';
-import { Field } from './field';
 import { Wallet } from './wallet';
 import { Print } from './print';
 import { brrr } from '../batch/brrr';
-import { FileDownload } from './download';
-import { FileUpload } from './upload';
+import { Header } from './header';
+import { DefaultAppState } from '../defaults';
+import { ParametersBatch } from './parametersBatch';
 
 export default class App extends React.Component<any, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
@@ -15,34 +15,14 @@ export default class App extends React.Component<any, IAppState> {
 
   constructor(props: any) {
     super(props);
-    this.state = {
-      adminId: '',
-      baseUrl: 'https://legend.lnbits.com',
-      batchRunning: false,
-      currentWalletIndex: 0,
-      namePrefix: 'BATCH',
-      numberOfWallets: 2,
-      proxyUrl: 'proxy.php',
-      readKey: '',
-      wallets: [],
-      writing: false,
-    };
+    this.state = DefaultAppState;
 
     this.lnurlWriter = new LnurlWriter();
     this.notyf = new Notyf();
   }
 
   public render() {
-    const {
-      adminId,
-      baseUrl,
-      currentWallet,
-      currentWalletIndex,
-      namePrefix,
-      numberOfWallets,
-      readKey,
-      wallets,
-    } = this.state;
+    const { currentWallet, currentWalletIndex, parametersBatch, wallets } = this.state;
 
     const next = () =>
       currentWalletIndex === wallets.length - 1
@@ -57,64 +37,22 @@ export default class App extends React.Component<any, IAppState> {
     return (
       <>
         <main className="container do-not-print">
-          <hgroup>
-            <h1>nfc-brrr-machine</h1>
-            <h2>Batch create nfc cards via LNBits!</h2>
-          </hgroup>
-          <div>
-            <Field
-              id="baseUrl"
-              label="LNBits url"
-              value={baseUrl}
-              onChange={(v) => this.setState({ baseUrl: v })}
-            />
-            <Field
-              id="adminId"
-              label="LNBits admin id"
-              value={adminId || ''}
-              onChange={(v) => this.setState({ adminId: v })}
-            />
-            <Field
-              id="readKey"
-              label="LNBits read key"
-              value={readKey || ''}
-              onChange={(v) => this.setState({ readKey: v })}
-            />
-            <Field
-              id="namePrefix"
-              label="Name prefix"
-              value={namePrefix}
-              onChange={(v) => this.setState({ namePrefix: v })}
-            />
-            <Field
-              id="numberOfWallets"
-              label="Number of wallets"
-              value={numberOfWallets + ''}
-              type="number"
-              onChange={(v) => this.setState({ numberOfWallets: parseInt(v, 10) || 1 })}
-            />
-            <FileUpload
-              id="upload"
-              label="Upload wallets"
-              onUpload={(d) => this.setState({ wallets: d, currentWallet: d[currentWalletIndex] })}
-            />
-            <button id="brrr" onClick={() => this.brrr()}>
-              Brrr...
-            </button>
-            <FileDownload fileName="wallets" caption="Download wallets" data={wallets} />
-          </div>
-          <Wallet wallet={currentWallet} />
-          <div className="grid">
-            <button id="previous" onClick={() => previous()}>
-              Previous
-            </button>
-            <button id="write" onClick={() => this.write()}>
-              Write
-            </button>
-            <button id="next" onClick={() => next()}>
-              Next
-            </button>
-          </div>
+          <Header />
+          <ParametersBatch
+            parameters={parametersBatch}
+            wallets={wallets}
+            brrr={() => this.brrr()}
+            updateParameters={(p) => this.setState({ parametersBatch: p })}
+            updateWallets={(w) =>
+              this.setState({ wallets: w, currentWallet: w[currentWalletIndex] })
+            }
+          />
+          <Wallet
+            wallet={currentWallet}
+            next={() => next()}
+            previous={() => previous()}
+            write={() => this.write()}
+          />
         </main>
         <Print wallets={wallets} />
       </>
@@ -123,7 +61,7 @@ export default class App extends React.Component<any, IAppState> {
 
   private async brrr() {
     this.setState({ batchRunning: true });
-    const wallets = await brrr(this.state);
+    const wallets = await brrr(this.state.parametersBatch);
     this.setState({
       batchRunning: false,
       wallets,

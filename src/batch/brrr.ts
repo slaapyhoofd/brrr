@@ -1,9 +1,9 @@
 import { createWallet } from './create';
-import { IAppState, IWalletInfo } from '../interfaces';
+import { IParametersBatch, IWalletInfo } from '../interfaces';
 import * as QRCode from 'qrcode';
 import ProxyHandler from '../util/post';
 
-export async function brrr(parameters: IAppState): Promise<IWalletInfo[]> {
+export async function brrr(parameters: IParametersBatch): Promise<IWalletInfo[]> {
   const { adminId, baseUrl, numberOfWallets, namePrefix, proxyUrl, readKey } = parameters;
   const proxyHandler = new ProxyHandler(baseUrl, proxyUrl);
 
