@@ -20,42 +20,47 @@ export const ParametersBatch = ({
   updateParameters,
   updateWallets,
 }: IParametersBatchProps) => {
-  const { adminId, baseUrl, namePrefix, numberOfWallets, proxyUrl, readKey } = parameters;
-
-  const adminIdRef = React.useRef<HTMLInputElement>(null);
-  const baseUrlRef = React.useRef<HTMLInputElement>(null);
-  const namePrefixRef = React.useRef<HTMLInputElement>(null);
-  const numberOfWalletsRef = React.useRef<HTMLInputElement>(null);
-  const readKeyRef = React.useRef<HTMLInputElement>(null);
-
-  const change = () => {
-    updateParameters({
-      adminId: adminIdRef.current!.value,
-      baseUrl: baseUrlRef.current!.value,
-      namePrefix: namePrefixRef.current!.value,
-      numberOfWallets: parseInt(numberOfWalletsRef.current!.value, 10) || 1,
-      readKey: readKeyRef.current!.value,
-      proxyUrl,
-    });
-  };
+  const { adminId, baseUrl, namePrefix, numberOfWallets, readKey } = parameters;
 
   return (
     <article>
       <header>Batch parameters</header>
       <div className="grid">
         <div>
-          <Field id="baseUrl" label="LNBits url" value={baseUrl} onChange={change} />
-          <Field id="adminId" label="LNBits admin id" value={adminId || ''} onChange={change} />
-          <Field id="readKey" label="LNBits read key" value={readKey || ''} onChange={change} />
+          <Field
+            id="baseUrl"
+            label="LNBits url"
+            value={baseUrl}
+            onChange={(v) => updateParameters({ ...parameters, baseUrl: v })}
+          />
+          <Field
+            id="adminId"
+            label="LNBits admin id"
+            value={adminId || ''}
+            onChange={(v) => updateParameters({ ...parameters, adminId: v })}
+          />
+          <Field
+            id="readKey"
+            label="LNBits read key"
+            value={readKey || ''}
+            onChange={(v) => updateParameters({ ...parameters, readKey: v })}
+          />
         </div>
         <div>
-          <Field id="namePrefix" label="Name prefix" value={namePrefix} onChange={change} />
+          <Field
+            id="namePrefix"
+            label="Name prefix"
+            value={namePrefix}
+            onChange={(v) => updateParameters({ ...parameters, namePrefix: v })}
+          />
           <Field
             id="numberOfWallets"
             label="Number of wallets"
             value={numberOfWallets + ''}
             type="number"
-            onChange={change}
+            onChange={(v) =>
+              updateParameters({ ...parameters, numberOfWallets: parseInt(v, 10) || 1 })
+            }
           />
           <FileUpload id="upload" label="Upload wallets" onUpload={(d) => updateWallets(d)} />
         </div>
