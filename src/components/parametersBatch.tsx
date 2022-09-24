@@ -3,6 +3,7 @@ import { IParametersBatch, IWalletInfo } from '../interfaces';
 import { Field } from './field';
 import { FileUpload } from './upload';
 import { FileDownload } from './download';
+import { safeParseInt } from '../util/parse';
 
 interface IParametersBatchProps {
   parameters: IParametersBatch;
@@ -59,7 +60,7 @@ export const ParametersBatch = ({
             value={numberOfWallets + ''}
             type="number"
             onChange={(v) =>
-              updateParameters({ ...parameters, numberOfWallets: parseInt(v, 10) || 1 })
+              updateParameters({ ...parameters, numberOfWallets: safeParseInt(v, 1, 1000) })
             }
           />
           <FileUpload id="upload" label="Upload wallets" onUpload={(d) => updateWallets(d)} />

@@ -3,6 +3,7 @@ export interface IAppState {
   currentWallet?: IWalletInfo;
   currentWalletIndex: number;
   parametersBatch: IParametersBatch;
+  parametersLnurl: IParametersLnurl;
   wallets: IWalletInfo[];
   writing: boolean;
 }
@@ -14,6 +15,15 @@ export interface IParametersBatch {
   numberOfWallets: number;
   proxyUrl: string;
   readKey?: string;
+}
+
+export interface IParametersLnurl {
+  min_withdrawable: number;
+  max_withdrawable: number;
+  title: string;
+  uses: number;
+  wait_time: number;
+  webhook_url?: string;
 }
 
 export interface IWalletInfo {

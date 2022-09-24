@@ -8,6 +8,7 @@ import { brrr } from '../batch/brrr';
 import { Header } from './header';
 import { DefaultAppState } from '../defaults';
 import { ParametersBatch } from './parametersBatch';
+import { ParametersLnurl } from './parametersLnurl';
 
 export default class App extends React.Component<any, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
@@ -22,7 +23,8 @@ export default class App extends React.Component<any, IAppState> {
   }
 
   public render() {
-    const { currentWallet, currentWalletIndex, parametersBatch, wallets } = this.state;
+    const { currentWallet, currentWalletIndex, parametersBatch, parametersLnurl, wallets } =
+      this.state;
 
     const next = () =>
       currentWalletIndex === wallets.length - 1
@@ -47,6 +49,10 @@ export default class App extends React.Component<any, IAppState> {
               this.setState({ wallets: w, currentWallet: w[currentWalletIndex] })
             }
           />
+          <ParametersLnurl
+            parameters={parametersLnurl}
+            updateParameters={(p) => this.setState({ parametersLnurl: p })}
+          />
           <Wallet
             wallet={currentWallet}
             next={() => next()}
@@ -60,13 +66,18 @@ export default class App extends React.Component<any, IAppState> {
   }
 
   private async brrr() {
-    this.setState({ batchRunning: true });
-    const wallets = await brrr(this.state.parametersBatch);
-    this.setState({
-      batchRunning: false,
-      wallets,
-      currentWallet: wallets[this.state.currentWalletIndex],
-    });
+    try {
+      const { parametersLnurl, parametersBatch, currentWalletIndex } = this.state;
+      this.setState({ batchRunning: true });
+      const wallets = await brrr(parametersBatch, parametersLnurl);
+      this.setState({
+        batchRunning: false,
+        wallets,
+        currentWallet: wallets[currentWalletIndex],
+      });
+    } catch (e) {
+      this.notyf.error('Error generating wallets!');
+    }
   }
 
   private setCurrentWallet(index: number): void {

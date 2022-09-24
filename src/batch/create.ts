@@ -1,20 +1,22 @@
 import ProxyHandler from '../util/post';
-import { IWalletInfo } from '../interfaces';
+import { IParametersBatch, IParametersLnurl, IWalletInfo } from '../interfaces';
 
 export async function createWallet(
-  ph: ProxyHandler,
   walletName: string,
-  userName: string,
-  adminId?: string,
-  readKey?: string,
+  parametersBatch: IParametersBatch,
+  parametersLnurl: IParametersLnurl,
+  ph: ProxyHandler,
 ): Promise<IWalletInfo> {
   try {
+    const { adminId, readKey } = parametersBatch;
+
+    // create wallet
     const responseWallet = await ph.post(
       `/usermanager/api/v1/users`,
       {
         admin_id: adminId,
         wallet_name: walletName,
-        user_name: userName,
+        user_name: window.crypto.randomUUID(),
         email: '',
         password: '',
       },
@@ -39,15 +41,10 @@ export async function createWallet(
       },
       inKey,
     );
-
     const responseLnurlw = await ph.post(
       `/withdraw/api/v1/links`,
       {
-        title: inKey,
-        min_withdrawable: 10,
-        max_withdrawable: 200000,
-        uses: 250,
-        wait_time: 10,
+        ...parametersLnurl,
         is_unique: false,
       },
       adminKey,
