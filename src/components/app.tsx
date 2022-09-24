@@ -6,6 +6,8 @@ import { Field } from './field';
 import { Wallet } from './wallet';
 import { Print } from './print';
 import { brrr } from '../batch/brrr';
+import { FileDownload } from './download';
+import { FileUpload } from './upload';
 
 export default class App extends React.Component<any, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
@@ -91,9 +93,15 @@ export default class App extends React.Component<any, IAppState> {
               type="number"
               onChange={(v) => this.setState({ numberOfWallets: parseInt(v, 10) || 1 })}
             />
+            <FileUpload
+              id="upload"
+              label="Upload wallets"
+              onUpload={(d) => this.setState({ wallets: d, currentWallet: d[currentWalletIndex] })}
+            />
             <button id="brrr" onClick={() => this.brrr()}>
               Brrr...
             </button>
+            <FileDownload fileName="wallets" caption="Download wallets" data={wallets} />
           </div>
           <Wallet wallet={currentWallet} />
           <div className="grid">
