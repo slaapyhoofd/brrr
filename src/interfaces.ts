@@ -5,6 +5,8 @@ export interface IAppState {
   parametersBatch: IParametersBatch;
   parametersLnurlP: IParametersLnurlP;
   parametersLnurlW: IParametersLnurlW;
+  progress: number;
+  progressMessage?: string;
   wallets: IWalletInfo[];
   writing: boolean;
 }

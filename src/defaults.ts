@@ -29,6 +29,7 @@ export const DefaultAppState: IAppState = {
     uses: 50,
     wait_time: 10,
   },
+  progress: 0,
   wallets: [],
   writing: false,
 };

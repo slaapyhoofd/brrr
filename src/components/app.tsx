@@ -30,6 +30,8 @@ export default class App extends React.Component<any, IAppState> {
       parametersBatch,
       parametersLnurlP,
       parametersLnurlW,
+      progress,
+      progressMessage,
       wallets,
     } = this.state;
 
@@ -49,6 +51,8 @@ export default class App extends React.Component<any, IAppState> {
           <Header />
           <ParametersBatch
             parameters={parametersBatch}
+            progress={progress}
+            progressMessage={progressMessage}
             wallets={wallets}
             brrr={() => this.brrr()}
             updateParameters={(p) => this.setState({ parametersBatch: p })}
@@ -83,11 +87,15 @@ export default class App extends React.Component<any, IAppState> {
       const { parametersLnurlP, parametersLnurlW, parametersBatch, currentWalletIndex } =
         this.state;
       this.setState({ batchRunning: true });
-      const wallets = await brrr(parametersBatch, parametersLnurlP, parametersLnurlW);
+      const wallets = await brrr(parametersBatch, parametersLnurlP, parametersLnurlW, (i, m) =>
+        this.setState({ progress: i, progressMessage: m }),
+      );
       this.setState({
         batchRunning: false,
-        wallets,
         currentWallet: wallets[currentWalletIndex],
+        progress: parametersBatch.numberOfWallets + 1,
+        progressMessage: 'Done!',
+        wallets,
       });
     } catch (e) {
       this.notyf.error('Error generating wallets!');

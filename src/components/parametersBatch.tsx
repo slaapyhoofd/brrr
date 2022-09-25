@@ -5,9 +5,12 @@ import { FileUpload } from './upload';
 import { FileDownload } from './download';
 import { safeParseInt } from '../util/parse';
 import { Checkbox } from './checkbox';
+import { Progress } from './progress';
 
 interface IParametersBatchProps {
   parameters: IParametersBatch;
+  progress: number;
+  progressMessage?: string;
   wallets: IWalletInfo[];
 
   brrr(): void;
@@ -17,6 +20,8 @@ interface IParametersBatchProps {
 
 export const ParametersBatch = ({
   parameters,
+  progress,
+  progressMessage,
   wallets,
   brrr,
   updateParameters,
@@ -94,6 +99,7 @@ export const ParametersBatch = ({
         value={lndHubEnabled}
         onChange={(v) => updateParameters({ ...parameters, lndHubEnabled: v })}
       />
+      <Progress value={progress} max={numberOfWallets + 1} message={progressMessage} />
       <footer>
         <div className="grid">
           <FileDownload
