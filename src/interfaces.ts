@@ -41,10 +41,16 @@ export interface IParametersLnurlP {
 }
 
 export interface IWalletInfo {
+  adminId: string;
   adminUrlLnBits: string;
-  adminUrlLnBitsQR?: string;
-  adminUrlLndHub: string;
+  adminUrlLndHub?: string;
   adminUrlLndHubQR?: string;
-  lnUrlW: string;
+  lnUrlP?: string;
+  lnUrlPQR?: string;
+  lnUrlW?: string;
+  lnUrlWQR?: string;
+  readKey: string;
   walletName?: string;
 }
+
+export type ExtensionType = 'withdraw' | 'lndhub' | 'lnurlp';

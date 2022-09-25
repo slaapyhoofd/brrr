@@ -80,9 +80,10 @@ export default class App extends React.Component<any, IAppState> {
 
   private async brrr() {
     try {
-      const { parametersLnurlW, parametersBatch, currentWalletIndex } = this.state;
+      const { parametersLnurlP, parametersLnurlW, parametersBatch, currentWalletIndex } =
+        this.state;
       this.setState({ batchRunning: true });
-      const wallets = await brrr(parametersBatch, parametersLnurlW);
+      const wallets = await brrr(parametersBatch, parametersLnurlP, parametersLnurlW);
       this.setState({
         batchRunning: false,
         wallets,
@@ -100,10 +101,10 @@ export default class App extends React.Component<any, IAppState> {
 
   private async write() {
     try {
-      if (this.state.currentWallet) {
+      if (this.state.currentWallet && this.state.currentWallet.lnUrlW) {
         this.setState({ writing: true });
         this.notyf.success('Starting write!');
-        await this.lnurlWriter.writeUrl(this.state.currentWallet?.lnUrlW);
+        await this.lnurlWriter.writeUrl(this.state.currentWallet.lnUrlW);
         this.notyf.success('Lnurlw written!');
       } else {
         this.notyf.error('No lnurl available to write!');

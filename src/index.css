@@ -29,6 +29,11 @@
     top: 25mm;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
 @media print {
     html,
     body {
