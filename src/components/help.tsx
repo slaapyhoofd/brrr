@@ -38,7 +38,7 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
       <p>
         LNbits is a godswork open source accounting-app build by various wonderful people and has lots of extensions and helpful features for developers. 
         You can run LNbits as a separate accounting on your lightning node. 
-        Alternatively you can use the custodian version of the official <a href"https://legend.lnbits.com">Legend LNbits</a> at your own risk.
+        Alternatively you can use the custodian version of the official <a href="https://legend.lnbits.com">Legend LNbits</a> at your own risk.
       
         You already run a node and LNbits is installed <a href="https://github.com/TrezorHannes/vps-lnbits">in clearnet</a> already? 
         Lets go! 
