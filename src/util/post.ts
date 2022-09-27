@@ -7,7 +7,7 @@ export default class ProxyHandler {
     this.proxyUrl = proxyUrl;
   }
 
-  public async post(path: string, data: any, xApiKey?: string) {
+  public async post(path: string, data: unknown, xApiKey?: string) {
     try {
       const body = { data, url: this.baseUrl + path, xApiKey };
       return await fetch(this.proxyUrl, {

@@ -11,11 +11,11 @@ import { ParametersBatch } from './parametersBatch';
 import { ParametersLnurlW } from './parametersLnurlW';
 import { ParametersLnurlP } from './parametersLnurlP';
 
-export default class App extends React.Component<any, IAppState> {
+export default class App extends React.Component<unknown, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
   private readonly notyf: Notyf;
 
-  constructor(props: any) {
+  constructor(props: unknown) {
     super(props);
     this.state = DefaultAppState;
 
@@ -117,11 +117,11 @@ export default class App extends React.Component<any, IAppState> {
       } else {
         this.notyf.error('No lnurl available to write!');
       }
-    } catch (e: any) {
-      if (e in ErrorReason) {
+    } catch (e: unknown) {
+      if (typeof e === 'number' && e in ErrorReason) {
         this.notyf.error(ErrorReason[e]);
       } else {
-        this.notyf.error(e.message);
+        this.notyf.error(e instanceof Error ? e.message : (e as string));
       }
     } finally {
       this.setState({ writing: false });

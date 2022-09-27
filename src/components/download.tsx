@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface IFileDownloadProps {
   caption: string;
-  data: any;
+  data: unknown;
   disabled: boolean;
   fileName: string;
 }

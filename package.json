@@ -5,7 +5,36 @@
   "main": "brrr.js",
   "scripts": {
     "build": "webpack --env prod --mode production",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development",
+    "eslint": "eslint .",
+    "prettier": "prettier \"**/!(*.d).ts\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off"
+    },
+    "plugins": [
+      "react",
+      "@typescript-eslint"
+    ],
+    "settings": {
+      "react": {
+        "pragma": "React",
+        "version": "18.2.0"
+      }
+    },
+    "ignorePatterns": [
+      "*.js",
+      "public/**"
+    ]
   },
   "prettier": {
     "printWidth": 100,
@@ -26,7 +55,13 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/w3c-web-nfc": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "css-loader": "^6.7.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
     "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.7.1",
     "style-loader": "^3.3.1",

@@ -87,16 +87,16 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
 
       <h3>Message</h3>
       <p>
-        "Brought to you by @youreventname" or just something like 'Thank you!". Will be shown on all
-        Terminals, that support messages to the recipient of the NFC-payment.
+        &quot;Brought to you by @youreventname&quot; or just something like &quot;Thank you!&quot;.
+        Will be shown on all Terminals, that support messages to the recipient of the NFC-payment.
       </p>
 
       <h3>Webhook</h3>
       <p>
         Insert a URL to be directed to when a payment is successful. Webhooks allow all sorts of
-        neat ideas apart from a "Thank You" page. For example you could send a ticket-file back, an
-        authentication-key and you could even start a relay with it that turns on a sound whenever
-        someone paid with the card using the{' '}
+        neat ideas apart from a &quot;Thank You&quot; page. For example you could send a ticket-file
+        back, an authentication-key and you could even start a relay with it that turns on a sound
+        whenever someone paid with the card using the{' '}
         <a href="https://github.com/arcbtc/bitcoinSwitch">bitcoinswitch-repo</a>.
         <a href="https://t.me/connect_the_world">Let us know</a>, what you did with it!
       </p>

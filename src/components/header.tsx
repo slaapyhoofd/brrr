@@ -19,9 +19,7 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      <p>
-        Batch create and and write LNbits wallets to NFC tags for your event! Brrr...
-      </p>
+      <p>Batch create and and write LNbits wallets to NFC tags for your event! Brrr...</p>
       <Help open={open} setOpen={(o) => setOpen(o)} />
     </>
   );

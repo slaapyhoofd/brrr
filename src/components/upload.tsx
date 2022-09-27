@@ -1,18 +1,23 @@
 import * as React from 'react';
+import { IWalletInfo } from '../interfaces';
 
 export interface IFileUploadProps {
   id: string;
   label: string;
-  onUpload(data: any): void;
+  onUpload(wallets: IWalletInfo[]): void;
 }
 
 export const FileUpload = ({ label, id, onUpload }: IFileUploadProps) => {
   const jsonFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileReader = new FileReader();
-    fileReader.readAsText(e.target!.files![0], 'UTF-8');
-    fileReader.onload = (e) => {
-      onUpload(JSON.parse(e.target!.result as string));
-    };
+    if (e.target && e.target.files) {
+      fileReader.readAsText(e.target.files[0], 'UTF-8');
+      fileReader.onload = (ev) => {
+        if (ev.target && ev.target.result && typeof ev.target.result === 'string') {
+          onUpload(JSON.parse(ev.target.result));
+        }
+      };
+    }
   };
   return (
     <label htmlFor={id}>

@@ -16,6 +16,7 @@ export class LnurlWriter {
   constructor() {
     // Checks if Web NFC is present
     if ('NDEFReader' in window) {
+      /* eslint-disable-next-line */
       // @ts-ignore
       this.ndefReader = new window.NDEFReader();
     }
@@ -32,7 +33,7 @@ export class LnurlWriter {
       }
 
       this.ignoreRead = false;
-      this.ndefReader.onreading = (event) => {
+      this.ndefReader.onreading = () => {
         if (this.ignoreRead) {
           // write pending, ignore read.
           return;

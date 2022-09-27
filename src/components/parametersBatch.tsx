@@ -81,10 +81,7 @@ export const ParametersBatch = ({
           <FileUpload id="upload" label="Upload wallets" onUpload={(d) => updateWallets(d)} />
         </div>
       </div>
-      <p>
-        Which data do you need ?
-      <br>
-        A link per card to ..
+      <p>Which data do you need? A link per card to ..</p>
       <Checkbox
         id="lnurlWEnabled"
         label="pay with it (LNURLw)"
@@ -103,7 +100,6 @@ export const ParametersBatch = ({
         value={lndHubEnabled}
         onChange={(v) => updateParameters({ ...parameters, lndHubEnabled: v })}
       />
-      </p>
       <Progress value={progress} max={numberOfWallets + 1} message={progressMessage} />
       <footer>
         <div className="grid">
