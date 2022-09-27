@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Help } from './help';
 
 export const Header = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <>
       <nav>

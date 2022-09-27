@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { IParametersLnurlW } from '../interfaces';
 import { Field } from './field';
 import { safeParseInt } from '../util/parse';

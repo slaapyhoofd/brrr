@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { IWalletInfo } from '../interfaces';
 
 export interface IPrintProps {

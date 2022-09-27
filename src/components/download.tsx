@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 export interface IFileDownloadProps {
   caption: string;
   data: unknown;

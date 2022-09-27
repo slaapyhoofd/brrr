@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { IParametersBatch, IWalletInfo } from '../interfaces';
 import { Field } from './field';
 import { FileUpload } from './upload';

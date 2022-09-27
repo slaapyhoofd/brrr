@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { IParametersLnurlP } from '../interfaces';
 import { Field } from './field';
 import { safeParseInt } from '../util/parse';
@@ -20,7 +20,7 @@ export const ParametersLnurlP = ({
   }
 
   const { max, min, description, success_url, success_text, webhook_url } = parameters;
-  const [fixed, setFixed] = React.useState(false);
+  const [fixed, setFixed] = useState(false);
 
   const updateMax = (value: string) => {
     const newMax = safeParseInt(value, 1);

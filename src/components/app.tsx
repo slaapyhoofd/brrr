@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Component } from 'react';
 import { Notyf } from 'notyf';
 import { IAppState } from '../interfaces';
 import { ErrorReason, LnurlWriter } from '../util/lnurlwriter';
@@ -11,7 +11,7 @@ import { ParametersBatch } from './parametersBatch';
 import { ParametersLnurlW } from './parametersLnurlW';
 import { ParametersLnurlP } from './parametersLnurlP';
 
-export default class App extends React.Component<unknown, IAppState> {
+export default class App extends Component<unknown, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
   private readonly notyf: Notyf;
 

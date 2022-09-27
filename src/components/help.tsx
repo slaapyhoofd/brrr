@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 interface IHelpProps {
   open: boolean;
   setOpen(open: boolean): void;

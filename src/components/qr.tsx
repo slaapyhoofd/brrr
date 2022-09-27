@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 interface IQRProps {
   qr?: string;
   text: string;

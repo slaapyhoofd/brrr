@@ -7,7 +7,9 @@
     "build": "webpack --env prod --mode production",
     "dev": "webpack-dev-server --mode development",
     "eslint": "eslint .",
-    "prettier": "prettier \"**/!(*.d).ts\""
+    "eslint:fix": "eslint . --fix",
+    "prettier": "prettier \"**/!(*.d).ts\"",
+    "prettier:fix": "prettier \"**/!(*.d).ts\" --fix"
   },
   "eslintConfig": {
     "extends": [

@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 interface IProgressProps {
   value: number;
   max: number;
