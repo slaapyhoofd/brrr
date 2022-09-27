@@ -40,24 +40,24 @@ export const ParametersBatch = ({
 
   return (
     <article>
-      <header>Batch parameters</header>
+      <header>Let´s Brrr some cards !</header>
       <div className="grid">
         <div>
           <Field
             id="baseUrl"
-            label="LNBits url"
+            label="My LNBits url"
             value={baseUrl}
             onChange={(v) => updateParameters({ ...parameters, baseUrl: v })}
           />
           <Field
             id="adminId"
-            label="LNBits admin id"
+            label="LNBits admin-id"
             value={adminId || ''}
             onChange={(v) => updateParameters({ ...parameters, adminId: v })}
           />
           <Field
             id="readKey"
-            label="LNBits read key"
+            label="LNBits read-key"
             value={readKey || ''}
             onChange={(v) => updateParameters({ ...parameters, readKey: v })}
           />
@@ -71,7 +71,7 @@ export const ParametersBatch = ({
           />
           <Field
             id="numberOfWallets"
-            label="Number of wallets"
+            label="Amount of cards"
             value={numberOfWallets + ''}
             type="number"
             onChange={(v) =>
@@ -81,24 +81,29 @@ export const ParametersBatch = ({
           <FileUpload id="upload" label="Upload wallets" onUpload={(d) => updateWallets(d)} />
         </div>
       </div>
+      <p>
+        Which data do you need ?
+      <br>
+        A link per card to ..
       <Checkbox
         id="lnurlWEnabled"
-        label="Create a link to pay with the card"
+        label="pay with it (LNURLw)"
         value={lnurlWEnabled}
         onChange={(v) => updateParameters({ ...parameters, lnurlWEnabled: v })}
       />
       <Checkbox
         id="lnurlPEnabled"
-        label="Create a link to top up the card"
+        label="top it up (LNURLp)"
         value={lnurlPEnabled}
         onChange={(v) => updateParameters({ ...parameters, lnurlPEnabled: v })}
       />
       <Checkbox
         id="lndHubEnabled"
-        label="Create a link to import the wallet in e.g. BlueWallet"
+        label="import it (e.g. to BlueWallet)"
         value={lndHubEnabled}
         onChange={(v) => updateParameters({ ...parameters, lndHubEnabled: v })}
       />
+      </p>
       <Progress value={progress} max={numberOfWallets + 1} message={progressMessage} />
       <footer>
         <div className="grid">
@@ -109,7 +114,7 @@ export const ParametersBatch = ({
             disabled={wallets.length === 0}
           />
           <button id="brrr" onClick={() => brrr()}>
-            Brrr...
+            Wallets Brrr...
           </button>
         </div>
       </footer>
