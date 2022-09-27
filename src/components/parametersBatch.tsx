@@ -39,7 +39,7 @@ export const ParametersBatch = ({
 
   return (
     <article>
-      <header>Let´s Brrr some cards !</header>
+      <header>Let&apos;s Brrr some cards !</header>
       <div className="grid">
         <div>
           <Field
