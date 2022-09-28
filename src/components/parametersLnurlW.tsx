@@ -20,10 +20,10 @@ export const ParametersLnurlW = ({
   const { max_withdrawable, min_withdrawable, title, uses, wait_time, webhook_url } = parameters;
   return (
     <article>
-      <header>Parameters for paying with the cards</header>
+      <header>Parameter for paying with the cards</header>
       <Field
         id="title"
-        label="Message when paying with the card"
+        label="Message on payment"
         value={title}
         onChange={(v) => updateParameters({ ...parameters, title: v })}
       />
@@ -31,7 +31,7 @@ export const ParametersLnurlW = ({
         <div>
           <Field
             id="min_withdrawable"
-            label="Min withdrawable (sat, at least 10)"
+            label="Min withdrawable (sat, at least 10) *"
             value={min_withdrawable + ''}
             type="number"
             onChange={(v) =>
@@ -39,22 +39,22 @@ export const ParametersLnurlW = ({
             }
           />
           <Field
-            id="max_withdrawable"
-            label="Max withdrawable (sat, at least 10)"
-            value={max_withdrawable + ''}
-            type="number"
-            onChange={(v) =>
-              updateParameters({ ...parameters, max_withdrawable: safeParseInt(v, 10) })
-            }
-          />
-        </div>
-        <div>
-          <Field
             id="uses"
             label="Amount of uses"
             value={uses + ''}
             type="number"
-            onChange={(v) => updateParameters({ ...parameters, uses: safeParseInt(v, 1) })}
+            onChange={(v) => updateParameters({ ...parameters, uses: safeParseInt(v, 100) })}
+          />
+        </div>
+        <div>
+          <Field
+            id="max_withdrawable"
+            label="Max withdrawable (sats)"
+            value={max_withdrawable + ''}
+            type="number"
+            onChange={(v) =>
+              updateParameters({ ...parameters, max_withdrawable: safeParseInt(v, 10000) })
+            }
           />
           <Field
             id="wait_time"
@@ -67,7 +67,7 @@ export const ParametersLnurlW = ({
       </div>
       <Field
         id="webhook_url"
-        label="Url to be redirected to after payment"
+        label="Url to be redirected to on payments"
         required={false}
         value={webhook_url || ''}
         onChange={(v) => updateParameters({ ...parameters, webhook_url: v })}
