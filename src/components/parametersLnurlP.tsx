@@ -40,6 +40,7 @@ export const ParametersLnurlP = ({
             id="min_withdrawable"
             label="Min"
             value={min + ''}
+            type="number"
             onChange={(v) => updateParameters({ ...parameters, min: safeParseInt(v, 1) })}
           />
         )}
@@ -47,6 +48,7 @@ export const ParametersLnurlP = ({
           id="max"
           label={fixed ? 'Amount' : 'Max'}
           value={max + ''}
+          type="number"
           onChange={(v) => updateMax(v)}
         />
       </div>

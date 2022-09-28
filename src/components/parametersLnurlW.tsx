@@ -33,6 +33,7 @@ export const ParametersLnurlW = ({
             id="min_withdrawable"
             label="Min withdrawable (sat, at least 10)"
             value={min_withdrawable + ''}
+            type="number"
             onChange={(v) =>
               updateParameters({ ...parameters, min_withdrawable: safeParseInt(v, 10) })
             }
@@ -41,6 +42,7 @@ export const ParametersLnurlW = ({
             id="max_withdrawable"
             label="Max withdrawable (sat, at least 10)"
             value={max_withdrawable + ''}
+            type="number"
             onChange={(v) =>
               updateParameters({ ...parameters, max_withdrawable: safeParseInt(v, 10) })
             }
@@ -51,12 +53,14 @@ export const ParametersLnurlW = ({
             id="uses"
             label="Amount of uses"
             value={uses + ''}
+            type="number"
             onChange={(v) => updateParameters({ ...parameters, uses: safeParseInt(v, 1) })}
           />
           <Field
             id="wait_time"
             label="Time between withdrawals (in seconds)"
             value={wait_time + ''}
+            type="number"
             onChange={(v) => updateParameters({ ...parameters, wait_time: safeParseInt(v, 10) })}
           />
         </div>
