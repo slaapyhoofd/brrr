@@ -74,7 +74,7 @@ export const ParametersLnurlP = ({
       />
       <Field
         id="webhook_url"
-        label="Url to be redirected to after deposit is made"
+        label="Url to trigger to after deposit is made"
         required={false}
         value={webhook_url || ''}
         onChange={(v) => updateParameters({ ...parameters, webhook_url: v })}

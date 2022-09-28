@@ -30,6 +30,7 @@ export const ParametersBatch = ({
     adminId,
     baseUrl,
     namePrefix,
+    invoiceEnabled,
     lndHubEnabled,
     lnurlPEnabled,
     lnurlWEnabled,
@@ -98,6 +99,13 @@ export const ParametersBatch = ({
         label="import it (e.g. to BlueWallet)"
         value={lndHubEnabled}
         onChange={(v) => updateParameters({ ...parameters, lndHubEnabled: v })}
+      />
+      <p>Do you want to fill up the cards? The LNBits admin wallet should have enough funds!</p>
+      <Checkbox
+        id="invoiceEnabled"
+        label="create invoices and pay them"
+        value={invoiceEnabled}
+        onChange={(v) => updateParameters({ ...parameters, invoiceEnabled: v })}
       />
       <Progress value={progress} max={numberOfWallets + 1} message={progressMessage} />
       <footer>

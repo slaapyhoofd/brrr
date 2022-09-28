@@ -3,6 +3,7 @@ export interface IAppState {
   currentWallet?: IWalletInfo;
   currentWalletIndex: number;
   parametersBatch: IParametersBatch;
+  parametersInvoice: IParametersInvoice;
   parametersLnurlP: IParametersLnurlP;
   parametersLnurlW: IParametersLnurlW;
   progress: number;
@@ -14,6 +15,7 @@ export interface IAppState {
 export interface IParametersBatch {
   adminId?: string;
   baseUrl: string;
+  invoiceEnabled: boolean;
   lndHubEnabled: boolean;
   lnurlPEnabled: boolean;
   lnurlWEnabled: boolean;
@@ -42,6 +44,19 @@ export interface IParametersLnurlP {
   success_url?: string;
 }
 
+export interface IParametersInvoice {
+  out: boolean;
+  amount: number;
+  memo?: string;
+  unit: 'sat';
+  webhook?: string;
+}
+
+export interface IInvoice {
+  payment_hash: string;
+  payment_request: string;
+}
+
 export interface IWalletInfo {
   adminId: string;
   adminUrlLnBits: string;
@@ -52,6 +67,7 @@ export interface IWalletInfo {
   lnUrlW?: string;
   lnUrlWQR?: string;
   readKey: string;
+  userId: string;
   walletName?: string;
 }
 

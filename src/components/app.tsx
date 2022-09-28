@@ -10,6 +10,7 @@ import { DefaultAppState } from '../defaults';
 import { ParametersBatch } from './parametersBatch';
 import { ParametersLnurlW } from './parametersLnurlW';
 import { ParametersLnurlP } from './parametersLnurlP';
+import { ParametersInvoice } from './parametersInvoice';
 
 export default class App extends Component<unknown, IAppState> {
   private readonly lnurlWriter: LnurlWriter;
@@ -28,6 +29,7 @@ export default class App extends Component<unknown, IAppState> {
       currentWallet,
       currentWalletIndex,
       parametersBatch,
+      parametersInvoice,
       parametersLnurlP,
       parametersLnurlW,
       progress,
@@ -70,6 +72,11 @@ export default class App extends Component<unknown, IAppState> {
             parameters={parametersLnurlP}
             updateParameters={(p) => this.setState({ parametersLnurlP: p })}
           />
+          <ParametersInvoice
+            enabled={parametersBatch.invoiceEnabled}
+            parameters={parametersInvoice}
+            updateParameters={(p) => this.setState({ parametersInvoice: p })}
+          />
           <Wallet
             wallet={currentWallet}
             next={() => next()}
@@ -84,12 +91,24 @@ export default class App extends Component<unknown, IAppState> {
 
   private async brrr() {
     try {
-      const { parametersLnurlP, parametersLnurlW, parametersBatch, currentWalletIndex } =
-        this.state;
+      const {
+        parametersLnurlP,
+        parametersLnurlW,
+        parametersBatch,
+        parametersInvoice,
+        currentWalletIndex,
+      } = this.state;
+
       this.setState({ batchRunning: true });
-      const wallets = await brrr(parametersBatch, parametersLnurlP, parametersLnurlW, (i, m) =>
-        this.setState({ progress: i, progressMessage: m }),
+
+      const wallets = await brrr(
+        parametersBatch,
+        parametersInvoice,
+        parametersLnurlP,
+        parametersLnurlW,
+        (i, m) => this.setState({ progress: i, progressMessage: m }),
       );
+
       this.setState({
         batchRunning: false,
         currentWallet: wallets[currentWalletIndex],
