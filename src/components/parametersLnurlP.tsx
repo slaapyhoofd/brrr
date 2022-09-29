@@ -19,7 +19,7 @@ export const ParametersLnurlP = ({
     return null;
   }
 
-  const { max, min, description, success_url, success_text, webhook_url } = parameters;
+  const { max, min, description, success_text, webhook_url } = parameters;
   const [fixed, setFixed] = useState(false);
 
   const updateMax = (value: string) => {
@@ -58,8 +58,7 @@ export const ParametersLnurlP = ({
         value={description}
         onChange={(v) => updateParameters({ ...parameters, description: v })}
       />
-      <p>
-        What to show, after deposit is made ?
+      <p>What to show, after deposit is made ?</p>
       <Field
         id="success_text"
         label="Message <none>"
