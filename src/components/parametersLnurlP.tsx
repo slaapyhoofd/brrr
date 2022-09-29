@@ -58,23 +58,18 @@ export const ParametersLnurlP = ({
         value={description}
         onChange={(v) => updateParameters({ ...parameters, description: v })}
       />
+      <p>
+        What to show, after deposit is made ?
       <Field
         id="success_text"
-        label="Message to show after deposit is made"
+        label="Message <none>"
         required={false}
         value={success_text || ''}
         onChange={(v) => updateParameters({ ...parameters, success_text: v })}
       />
       <Field
-        id="success_url"
-        label="Url to be redirected to after deposit is made"
-        required={false}
-        value={success_url || ''}
-        onChange={(v) => updateParameters({ ...parameters, success_url: v })}
-      />
-      <Field
         id="webhook_url"
-        label="Url to trigger to after deposit is made"
+        label="Url <none>"
         required={false}
         value={webhook_url || ''}
         onChange={(v) => updateParameters({ ...parameters, webhook_url: v })}
