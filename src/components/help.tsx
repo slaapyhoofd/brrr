@@ -67,14 +67,16 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
 
       <h3>LNBits admin id</h3>
       <p>
-        Open LNbits and create a wallet. To the right you will find a section called API-Info. If
-        you click it, it will bring up the relevant IDs. Copy to use them here.
+        Open LNbits and choose your funding wallet for the cards. To the right you will find a section called API-Info. If
+        you click it, it will bring up the relevant IDs. Copy to use them here. If you do not want to fund the cards
+        with sats you can create an empty wallet, to get these IDs. 
       </p>
 
       <h3>LNBits read key</h3>
       <p>
-        Open LNbits and create a wallet. To the right you will find a section called API-Info. If
-        you click it, it will bring up the relevant IDs. Copy to use them here.
+        Open LNbits and choose your funding wallet for the cards. To the right you will find a section called API-Info. If
+        you click it, it will bring up the relevant IDs. Copy to use them here. If you do not want to fund the cards
+        with sats you can create an empty wallet, to get these IDs. 
       </p>
 
       <h3>Name prefix</h3>
