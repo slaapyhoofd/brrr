@@ -34,11 +34,23 @@
     justify-content: center;
 }
 
+.qr fieldset {
+    margin-top: 1rem;
+}
+
+.print {
+    display: none;
+}
+
 @media print {
     html,
     body {
         height: 297mm;
         width: 210mm;
+    }
+
+    .print {
+        display: block;
     }
 
     .do-not-print {

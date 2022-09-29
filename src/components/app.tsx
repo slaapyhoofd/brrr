@@ -32,6 +32,7 @@ export default class App extends Component<unknown, IAppState> {
       parametersInvoice,
       parametersLnurlP,
       parametersLnurlW,
+      parametersOutput,
       progress,
       progressMessage,
       wallets,
@@ -79,12 +80,14 @@ export default class App extends Component<unknown, IAppState> {
           />
           <Wallet
             wallet={currentWallet}
+            parameters={parametersOutput}
+            updateParameters={(p) => this.setState({ parametersOutput: p })}
             next={() => next()}
             previous={() => previous()}
             write={() => this.write()}
           />
         </main>
-        <Print wallets={wallets} />
+        <Print wallets={wallets} parameters={parametersOutput} />
       </>
     );
   }
@@ -128,11 +131,17 @@ export default class App extends Component<unknown, IAppState> {
 
   private async write() {
     try {
-      if (this.state.currentWallet && this.state.currentWallet.lnUrlW) {
+      const { currentWallet, parametersOutput } = this.state;
+      if (currentWallet) {
         this.setState({ writing: true });
-        this.notyf.success('Starting write!');
-        await this.lnurlWriter.writeUrl(this.state.currentWallet.lnUrlW);
-        this.notyf.success('Lnurlw written!');
+        this.notyf.success(`Started writing ${parametersOutput.nfc}!`);
+        if (parametersOutput.nfc === 'lnurlw' && currentWallet.lnUrlW) {
+          await this.lnurlWriter.writeUrl(currentWallet.lnUrlW);
+        }
+        if (parametersOutput.nfc === 'lnurlp' && currentWallet.lnUrlP) {
+          await this.lnurlWriter.writeUrl(currentWallet.lnUrlP);
+        }
+        this.notyf.success(`${parametersOutput.nfc} written!`);
       } else {
         this.notyf.error('No lnurl available to write!');
       }

@@ -35,6 +35,10 @@ export const DefaultAppState: IAppState = {
     uses: 50,
     wait_time: 10,
   },
+  parametersOutput: {
+    nfc: 'lnurlw',
+    qr: ['lndhub'],
+  },
   progress: 0,
   wallets: [],
   writing: false,

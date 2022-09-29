@@ -17,7 +17,7 @@ export const ParametersInvoice = ({
     return null;
   }
 
-  const { amount, memo, webhook } = parameters;
+  const { amount, memo } = parameters;
   return (
     <article>
       <header>Parameter for funding your cards with sats</header>

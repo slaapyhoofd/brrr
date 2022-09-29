@@ -66,6 +66,7 @@ export async function brrr(
     }
 
     // create QRs
+    const adminUrlLnBitsQR = await safeQr(wallet.adminUrlLnBits);
     const adminUrlLndHubQR = await safeQr(adminUrlLndHub);
     const lnUrlPQR = await safeQr(lnUrlW);
     const lnUrlWQR = await safeQr(lnUrlP);
@@ -73,6 +74,7 @@ export async function brrr(
     wallets.push({
       ...wallet,
       walletName,
+      adminUrlLnBitsQR,
       adminUrlLndHub,
       adminUrlLndHubQR,
       lnUrlP,

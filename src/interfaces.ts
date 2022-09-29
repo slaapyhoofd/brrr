@@ -6,6 +6,7 @@ export interface IAppState {
   parametersInvoice: IParametersInvoice;
   parametersLnurlP: IParametersLnurlP;
   parametersLnurlW: IParametersLnurlW;
+  parametersOutput: IParametersOutput;
   progress: number;
   progressMessage?: string;
   wallets: IWalletInfo[];
@@ -52,6 +53,13 @@ export interface IParametersInvoice {
   webhook?: string;
 }
 
+export type OutputTypes = 'lnurlp' | 'lnurlw' | 'lndhub' | 'lnbits';
+
+export interface IParametersOutput {
+  nfc: OutputTypes;
+  qr: OutputTypes[];
+}
+
 export interface IInvoice {
   payment_hash: string;
   payment_request: string;
@@ -60,6 +68,7 @@ export interface IInvoice {
 export interface IWalletInfo {
   adminId: string;
   adminUrlLnBits: string;
+  adminUrlLnBitsQR?: string;
   adminUrlLndHub?: string;
   adminUrlLndHubQR?: string;
   lnUrlP?: string;
