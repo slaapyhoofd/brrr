@@ -20,9 +20,10 @@ Put the right(!) sticker on each card or flyer and your guests are set to use so
 - LNBits is installed and in [clearnet](https://github.com/TrezorHannes/vps-lnbits#5-vps-install-lnbits)
 
 ### What I will do for you
-- Create wallets and all links needed for each card
-- Write the link to pay with onto a bunch of cards
-- Fill a sticker-template with import links (Avery 25x25-S)
+- Create wallets and all links needed for each card 
+- Fund the cards with your LNbits wallet
+- Write the chosen link onto a bunch of cards
+- Fill a sticker-template with chosen link (Avery 25x25-S)
 - *Soon: upload a design and order your cards online*
 
 ## Now let´s get your wallets ready and BRRRR some cards and stickers!
