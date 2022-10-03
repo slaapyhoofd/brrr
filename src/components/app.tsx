@@ -110,15 +110,21 @@ export default class App extends Component<unknown, IAppState> {
         parametersLnurlP,
         parametersLnurlW,
         (i, m) => this.setState({ progress: i, progressMessage: m }),
+        (e) => this.notyf.error(e),
       );
 
       this.setState({
         batchRunning: false,
         currentWallet: wallets[currentWalletIndex],
-        progress: parametersBatch.numberOfWallets + 1,
-        progressMessage: 'Done!',
         wallets,
       });
+
+      if (wallets.length > 0) {
+        this.setState({
+          progress: parametersBatch.numberOfWallets + 1,
+          progressMessage: 'Done!',
+        });
+      }
     } catch (e) {
       this.notyf.error('Error generating wallets!');
     }

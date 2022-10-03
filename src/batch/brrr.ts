@@ -8,7 +8,7 @@ import {
 import * as QRCode from 'qrcode';
 import ProxyHandler from '../util/post';
 import { createLnurlP, createLnurlW } from './lnurl';
-import { createWallet } from './wallet';
+import { createWallet, getBalance } from './wallet';
 import { enableLndHub } from './lndhub';
 import { createInvoice, payInvoice } from './invoice';
 import { LightningUrlPrefix } from '../defaults';
@@ -22,6 +22,7 @@ export async function brrr(
   parametersLnurlP: IParametersLnurlP,
   parametersLnurlW: IParametersLnurlW,
   onProgress: (index: number, message: string) => void,
+  onError: (message: string) => void,
 ): Promise<IWalletInfo[]> {
   const {
     baseUrl,
@@ -35,6 +36,16 @@ export async function brrr(
   } = parametersBatch;
   const ph = new ProxyHandler(baseUrl, proxyUrl);
   const wallets: IWalletInfo[] = [];
+
+  if (invoiceEnabled && parametersBatch.readKey) {
+    const balance = await getBalance(parametersBatch.readKey, ph);
+    // balance in msats, invoice amount is in sats
+    const enoughFunding = balance / 1000 - numberOfWallets * parametersInvoice.amount > 0;
+    if (!enoughFunding) {
+      onError('Not enough balance to fund wallets!');
+      return wallets;
+    }
+  }
 
   for (let i = 1; i <= numberOfWallets; i++) {
     const walletName = `${namePrefix}${(i + '').padStart(3, '0')}`;

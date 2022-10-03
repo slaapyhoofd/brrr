@@ -41,3 +41,13 @@ export const createWallet = async (
     return Promise.reject(e);
   }
 };
+
+export const getBalance = async (inKey: string, ph: ProxyHandler): Promise<number> => {
+  try {
+    const response = await ph.get('/api/v1/wallet', inKey);
+    const info = await response.json();
+    return info.balance || 0;
+  } catch (e: unknown) {
+    return Promise.reject(e);
+  }
+};

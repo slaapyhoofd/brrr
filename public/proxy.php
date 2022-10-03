@@ -8,15 +8,23 @@ $apiKey = $_POST["xApiKey"];
 $data = $_POST["data"];
 
 $httpHeader = array(
-    'Content-Type: application/json',
-    'X-Api-Key: ' . $apiKey
+  'Content-Type: application/json',
+  'X-Api-Key: ' . $apiKey
 );
 
 // Create a new cURL resource
 $ch = curl_init($url);
 
-// Attach encoded JSON string to the POST fields
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+if (isset($data))
+{
+  // Attach encoded JSON string to the POST fields
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+}
+else
+{
+  // Set request type to GET
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+}
 
 // Set the content type to application/json
 curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeader);

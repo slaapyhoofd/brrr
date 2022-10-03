@@ -26,7 +26,7 @@ export const ParametersInvoice = ({
         label="Amount of sats per card"
         value={amount + ''}
         type="number"
-        onChange={(v) => updateParameters({ ...parameters, amount: safeParseInt(v, 1) })}
+        onChange={(v) => updateParameters({ ...parameters, amount: safeParseInt(v, 1, 21000000) })}
       />
       <Field
         id="memo"

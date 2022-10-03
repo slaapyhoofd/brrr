@@ -22,5 +22,20 @@ export default class ProxyHandler {
     }
   }
 
+  public async get(path: string, xApiKey?: string) {
+    try {
+      const body = { url: this.baseUrl + path, xApiKey, method: 'POST' };
+      return fetch(this.proxyUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify(body),
+      });
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }
+
   public getBase = () => this.baseUrl;
 }
