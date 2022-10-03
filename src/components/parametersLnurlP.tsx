@@ -29,7 +29,7 @@ export const ParametersLnurlP = ({
 
   return (
     <article>
-      <header>Parameters for topping op the card</header>
+      <header>Parameter for payments to the card</header>
       <div className="grid">
         <p>How much sats should the wallets be able to receive?</p>
         <Checkbox id="fixed" label="Fixed amount" value={fixed} onChange={(v) => setFixed(v)} />
