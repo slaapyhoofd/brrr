@@ -31,7 +31,8 @@ export const ParametersLnurlW = ({
         <div>
           <Field
             id="min_withdrawable"
-            label="Min withdrawable (sat, at least 10) *"
+            label="Min withdrawable (sat, at least 10)"
+            required={true}
             value={min_withdrawable + ''}
             type="number"
             onChange={(v) =>
