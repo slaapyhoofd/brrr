@@ -17,41 +17,53 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         We want this tool to be helpful to everyone, that wants to bring Lightning cards to their
         event in an ease - may it be a birthday party, a meetup or a conference.
         <br />
-        As the very first web version in bitcoinland I will help you to set up
-        everything you need to produce a neat bunch of Lightning NFC-Cards for your guests. <br />
+        As the very first web version in bitcoinland I will help you to set up everything you need
+        to produce a neat bunch of Lightning NFC-Cards for your guests. <br />
         And I am awesome in doing so. Seriously.
-        </p>
-       <p><b>
-        What I will do for you:
-        - Batchwise create wallets and all their links you need<br <br />
-        - Fund the cards with your LNbits wallet<br />
-        - Write the chosen link onto a bunch of cards<br />
-        - Fill a sticker-template with chosen link (Avery 25x25-S)<br />
-        - *Soon: upload a design and order your cards online*<br />
-          </b></p>
-        <p>Notes: <br />
-        - To prevent trouble with AML rules you may not sell the cards. It is recommended to let them expire short time after your event. <br />
-        - Therefore we do not lock the cards, which allows a cardholder to overwrite it with an own wallet. Thats the way. <br />
-          - NFCCards with NTAG 216 can carry just 1 written link which usually is the one to pay with.
+      </p>
+      <p>
+        <b>
+          What I will do for you: - Batchwise create wallets and all their links you need
+          <br />
+          - Fund the cards with your LNbits wallet
+          <br />
+          - Write the chosen link onto a bunch of cards
+          <br />
+          - Fill a sticker-template with chosen link (Avery 25x25-S)
+          <br />
+          - *Soon: upload a design and order your cards online*
+          <br />
+        </b>
+      </p>
+      <p>
+        Notes: <br />
+        - To prevent trouble with AML rules you may not sell the cards. It is recommended to let
+        them expire short time after your event. <br />
+        - Therefore we do not lock the cards, which allows a cardholder to overwrite it with an own
+        wallet. Thats the way. <br />
+        - NFCCards with NTAG 216 can carry just 1 written link which usually is the one to pay with.
         But thats not enough, right? To be able to refill the card or see the balance, NFC-BRRR can
         generate stickers carrying an Import-Key for e.g. BlueWallet per each card. Put the right(!)
         sticker on each card or a corresponding flyer and your guests are set to endlessly use some
         vending machines or beertaps!
         <br />
-        Do you have your machines set up, that your customers can pay with bitcoin via Lightning? <br />
+        Do you have your machines set up, that your customers can pay with bitcoin via Lightning?{' '}
+        <br />
         Lets get your wallets and stickers ready and BRRRR some cards!
       </p>
 
       <h3>LNBits</h3>
       <p>
-        <a href="https://lnbits.com/">LNbits</a> is a godswork open source accounting-app that
-        has lots of extensions with helpful features for LNURL developers. <br />
-        You can run LNbits as a separate accounting system on your lightning node. Alternatively you can use 
-        the custodian version of the official <a href="https://legend.lnbits.com">Legend LNbits</a> at your own risk.
+        <a href="https://lnbits.com/">LNbits</a> is a godswork open source accounting-app that has
+        lots of extensions with helpful features for LNURL developers. <br />
+        You can run LNbits as a separate accounting system on your lightning node. Alternatively you
+        can use the custodian version of the official{' '}
+        <a href="https://legend.lnbits.com">Legend LNbits</a> at your own risk.
         <br />
         You already run a node and LNbits is installed{' '}
         <a href="https://github.com/TrezorHannes/vps-lnbits">in clearnet</a> ? Good job! Now connect
-        me to your LNbits to register a bunch of wallets and all those links there, that you need.<br />
+        me to your LNbits to register a bunch of wallets and all those links there, that you need.
+        <br />
         For the cards and stickers you can choose to use a link to
         <br />
         - deposit (often referred to as Receive, Deposit, LNURLp, ..)
@@ -65,8 +77,10 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
 
       <h3>LNBits admin-id & ready-key</h3>
       <p>
-        Open LNbits and create a funding wallet for the cards. To the right you will find a section called API-Info. If
-        you click it, it will bring up the admin-id and read-key. Copy to use them here.</br>
+        Open LNbits and create a funding wallet for the cards. To the right you will find a section
+        called API-Info. If you click it, it will bring up the admin-id and read-key. Copy to use
+        them here.
+        <br />
         <b>Make sure this wallet has enough satoshis loaded before proceeding. </b>
       </p>
 
@@ -74,8 +88,8 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
       <p>
         LNURL enables very smooth end-user experiences in the Lightning Network. It was brought to
         life by <a href="https://twitter.com/fiatjaf">fiatjaf</a> and is a side channel
-        communication protocol with subprotocols representing specific UX flows. From those we are e.g.
-        using LNURLw to deposit and LNURLp to enable payments with the card.
+        communication protocol with subprotocols representing specific UX flows. From those we are
+        e.g. using LNURLw to deposit and LNURLp to enable payments with the card.
         <br />
         Have a look at some LNURL-machines from builders around the globe at{' '}
         <a href="https://github.com/fiatjaf/awesome-lnurl">awesome LNURL</a>.
@@ -107,7 +121,7 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         funky ideas apart from a &quot;Thank You&quot; page. You could instead send a ticket-file
         back, an authentication-key or you could start a relais with it that turns on a sound
         whenever someone paid with the card using the{' '}
-        <a href="https://github.com/arcbtc/bitcoinSwitch">bitcoinswitch-repo</a>.</br>
+        <a href="https://github.com/arcbtc/bitcoinSwitch">bitcoinswitch-repo</a>.<br />
         <a href="https://t.me/connect_the_world">Let us know</a>, what you did with it!
       </p>
     </article>
