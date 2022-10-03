@@ -11,6 +11,7 @@ import { createLnurlP, createLnurlW } from './lnurl';
 import { createWallet } from './wallet';
 import { enableLndHub } from './lndhub';
 import { createInvoice, payInvoice } from './invoice';
+import { LightningUrlPrefix } from '../defaults';
 
 const safeQr = async (value?: string): Promise<string | undefined> =>
   value ? await QRCode.toDataURL(value) : undefined;
@@ -40,23 +41,29 @@ export async function brrr(
 
     // create the wallet
     onProgress(i, `Creating wallet ${walletName}`);
-    const wallet = await createWallet(walletName, parametersBatch, ph);
+    let wallet = await createWallet(walletName, parametersBatch, ph);
     const { adminId, readKey, userId } = wallet;
 
     // enable lnurlp
-    const lnUrlP = lnurlPEnabled
-      ? await createLnurlP(parametersLnurlP, adminId, userId, readKey, ph)
-      : undefined;
+    if (lnurlPEnabled) {
+      const lnUrlP = await createLnurlP(parametersLnurlP, adminId, userId, readKey, ph);
+      const lnUrlPQR = await safeQr(LightningUrlPrefix + lnUrlP);
+      wallet = { ...wallet, lnUrlP, lnUrlPQR };
+    }
 
     // enable lnurlw
-    const lnUrlW = lnurlWEnabled
-      ? await createLnurlW(parametersLnurlW, adminId, userId, readKey, ph)
-      : undefined;
+    if (lnurlWEnabled) {
+      const lnUrlW = await createLnurlW(parametersLnurlW, adminId, userId, readKey, ph);
+      const lnUrlWQR = await safeQr(LightningUrlPrefix + lnUrlW);
+      wallet = { ...wallet, lnUrlW, lnUrlWQR };
+    }
 
     // enable BlueWallet import
-    const adminUrlLndHub = lndHubEnabled
-      ? await enableLndHub(adminId, userId, readKey, ph)
-      : undefined;
+    if (lndHubEnabled) {
+      const adminUrlLndHub = await enableLndHub(adminId, userId, readKey, ph);
+      const adminUrlLndHubQR = await safeQr(adminUrlLndHub);
+      wallet = { ...wallet, adminUrlLndHub, adminUrlLndHubQR };
+    }
 
     // enable invoices and pay them
     if (invoiceEnabled && parametersBatch.adminId) {
@@ -67,20 +74,11 @@ export async function brrr(
 
     // create QRs
     const adminUrlLnBitsQR = await safeQr(wallet.adminUrlLnBits);
-    const adminUrlLndHubQR = await safeQr(adminUrlLndHub);
-    const lnUrlPQR = await safeQr(lnUrlW);
-    const lnUrlWQR = await safeQr(lnUrlP);
 
     wallets.push({
       ...wallet,
       walletName,
       adminUrlLnBitsQR,
-      adminUrlLndHub,
-      adminUrlLndHubQR,
-      lnUrlP,
-      lnUrlPQR,
-      lnUrlW,
-      lnUrlWQR,
     });
   }
 

@@ -2,6 +2,8 @@ import { IAppState } from './interfaces';
 
 const DefaultMax = 200000;
 
+export const LightningUrlPrefix = 'lightning:';
+
 export const DefaultAppState: IAppState = {
   batchRunning: false,
   currentWalletIndex: 0,
