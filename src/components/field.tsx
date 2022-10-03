@@ -27,6 +27,7 @@ export const Field = ({
       value={value}
       onChange={(e) => onChange(e.currentTarget.value)}
       required={required}
+      autoComplete="off"
     />
   </label>
 );
