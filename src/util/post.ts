@@ -1,9 +1,11 @@
+const stripTrailingSlash = (str: string): string => (str.endsWith('/') ? str.slice(0, -1) : str);
+
 export default class ProxyHandler {
   private readonly baseUrl: string;
   private readonly proxyUrl: string;
 
   constructor(baseUrl: string, proxyUrl: string) {
-    this.baseUrl = baseUrl;
+    this.baseUrl = stripTrailingSlash(baseUrl);
     this.proxyUrl = proxyUrl;
   }
 
