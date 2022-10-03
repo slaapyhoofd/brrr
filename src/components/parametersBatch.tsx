@@ -53,12 +53,14 @@ export const ParametersBatch = ({
             id="adminId"
             label="LNBits admin-id"
             value={adminId || ''}
+            type="password"
             onChange={(v) => updateParameters({ ...parameters, adminId: v })}
           />
           <Field
             id="readKey"
             label="LNBits read-key"
             value={readKey || ''}
+            type="password"
             onChange={(v) => updateParameters({ ...parameters, readKey: v })}
           />
         </div>
