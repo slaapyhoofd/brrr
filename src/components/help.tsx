@@ -23,7 +23,8 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
       </p>
       <p>
         <b>
-          What I will do for you: - Batchwise create wallets and all their links you need
+          What I will do for you: <br />
+          - Batchwise create wallets and all their links you need
           <br />
           - Fund the cards with your LNbits wallet
           <br />
@@ -31,22 +32,22 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
           <br />
           - Fill a sticker-template with chosen link (Avery 25x25-S)
           <br />
-          - *Soon: upload a design and order your cards online*
+          *Soon: upload a design and order your cards online*
           <br />
         </b>
       </p>
       <p>
         Notes: <br />
-        - To prevent trouble with AML rules you may not sell the cards. It is recommended to let
-        them expire short time after your event. <br />
-        - Therefore we do not lock the cards, which allows a cardholder to overwrite it with an own
-        wallet. Thats the way. <br />
+        - To prevent trouble with AML rules you may not sell the cards nor run the wallets longer as needed on your node. It is recommended to let
+        them expire short time after your event. Communicate clearly when this will be!<br />
+        - Therefore we do not lock the cards, which allows a future cardholder to overwrite it with an own
+        wallet on an own node. Thats the way. <br />
         - NFCCards with NTAG 216 can carry just 1 written link which usually is the one to pay with.
         But thats not enough, right? To be able to refill the card or see the balance, NFC-BRRR can
-        generate stickers carrying an Import-Key for e.g. BlueWallet per each card. Put the right(!)
-        sticker on each card or a corresponding flyer and your guests are set to endlessly use some
+        generate stickers carrying an Import-Key (for e.g. BlueWallet) per card. <br />
+        Put the right(!) sticker on each card or a corresponding flyer and your guests are set to endlessly use some
         vending machines or beertaps!
-        <br />
+        </p />
         Do you have your machines set up, that your customers can pay with bitcoin via Lightning?{' '}
         <br />
         Lets get your wallets and stickers ready and BRRRR some cards!
@@ -59,7 +60,7 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         You can run LNbits as a separate accounting system on your lightning node. Alternatively you
         can use the custodian version of the official{' '}
         <a href="https://legend.lnbits.com">Legend LNbits</a> at your own risk.
-        <br />
+        <br /><p>
         You already run a node and LNbits is installed{' '}
         <a href="https://github.com/TrezorHannes/vps-lnbits">in clearnet</a> ? Good job! Now connect
         me to your LNbits to register a bunch of wallets and all those links there, that you need.
@@ -71,7 +72,7 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         - pay (Send, Pay, LNURLw, ..)
         <br />
         - Import to e.g. BlueWallet (LNDhub)
-        <br />
+        </p>
         Thanks for using me!
       </p>
 
@@ -81,7 +82,7 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         called API-Info. If you click it, it will bring up the admin-id and read-key. Copy to use
         them here.
         <br />
-        <b>Make sure this wallet has enough satoshis loaded before proceeding. </b>
+        <b>IMPORTANT : Make sure this wallet has enough Satoshi loaded before proceeding. </b>
       </p>
 
       <h3>LNURL</h3>
@@ -95,18 +96,18 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         <a href="https://github.com/fiatjaf/awesome-lnurl">awesome LNURL</a>.
       </p>
 
-      <h3>Sticker?</h3>
+      <h3>Sticker you say?</h3>
       <p>
         To enable a cardholder to import the wallet in e.g. BlueWallet and see the balance OR to
-        just be able to refill the card, we need to generate an individual QR-code. This can become
-        either a sticker attached to the card itself.
+        just be able to refill the card, we need to generate an additional individual QR-code. This can become
+        either a sticker attached to the card itself or to an individual flyer, that goes along with the tag.
         <br />
-        Think twice about putting the import-code here instead of the one to refill the card. You
-        would not want videos of this code on Social Media.. Rather stick the admin-key to a flyer
-        that goes with each card and/or the deposit-link to the sticker on the card. Whatever you
-        do, take good care to take the right one! To help you not messing things up with those three
-        possible options, the prefix and card number is shown crossover, whenever we are brrring
-        something for your project.
+        Think twice about putting the Code for importing to the card instead of the one to just refill it. You
+        would not want videos of this code on Social Media.. We suggest you stick the admin-key to a flyer
+        that goes with each card and put the deposit-link to the card itself. Whatever you
+        do, take good care to take the right one!! To help you not messing things up with those three
+        possible options, the prefix and card number is shown, whenever we are brrring
+        something for your project. 
       </p>
 
       <h3>Name prefix</h3>
