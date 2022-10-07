@@ -102,10 +102,10 @@ export const ParametersBatch = ({
         value={lndHubEnabled}
         onChange={(v) => updateParameters({ ...parameters, lndHubEnabled: v })}
       />
-      <p>Do you want to fill up the cards? The LNBits admin wallet should have enough funds!</p>
+      <p>Do you want to fund the cards?</p>
       <Checkbox
         id="invoiceEnabled"
-        label="create invoices and pay them"
+        label="Sure! Initial LNbits wallet funded and ready."
         value={invoiceEnabled}
         onChange={(v) => updateParameters({ ...parameters, invoiceEnabled: v })}
       />
