@@ -90,7 +90,7 @@ export const Help = ({ open, setOpen }: IHelpProps) => (
         LNURL enables very smooth end-user experiences in the Lightning Network. It was brought to
         life by <a href="https://twitter.com/fiatjaf">fiatjaf</a> and is a side channel
         communication protocol with subprotocols representing specific UX flows. From those we are
-        e.g. using LNURLw to deposit and LNURLp to enable payments with the card.
+        e.g. using LNURLp to deposit and LNURLw to enable payments with the card.
         <br />
         Have a look at some LNURL-machines from builders around the globe at{' '}
         <a href="https://github.com/fiatjaf/awesome-lnurl">awesome LNURL</a>.
