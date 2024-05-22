@@ -30,12 +30,13 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
       publicPath: '/',
     },
-    proxy: {
-      '/proxy.php': {
+    proxy: [
+      {
+        context: '/proxy.php',
         target: 'https://[YOUR_DOMAIN]/proxy.php',
         secure: false,
         changeOrigin: true,
       },
-    },
+    ],
   },
 };
