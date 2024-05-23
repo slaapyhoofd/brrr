@@ -4,3 +4,4 @@ output/
 config.js
 /public/brrr.js.LICENSE.txt
 .vscode/
+requests/

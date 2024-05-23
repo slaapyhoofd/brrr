@@ -37,8 +37,8 @@ export async function brrr(
   const ph = new ProxyHandler(baseUrl, proxyUrl);
   const wallets: IWalletInfo[] = [];
 
-  if (invoiceEnabled && parametersBatch.readKey) {
-    const balance = await getBalance(parametersBatch.readKey, ph);
+  if (invoiceEnabled && parametersBatch.adminId) {
+    const balance = await getBalance(parametersBatch.adminId, ph);
     // balance in msats, invoice amount is in sats
     const enoughFunding = balance / 1000 - numberOfWallets * parametersInvoice.amount > 0;
     if (!enoughFunding) {

@@ -14,7 +14,7 @@ export interface IAppState {
 }
 
 export interface IParametersBatch {
-  adminId?: string;
+  userId?: string;
   baseUrl: string;
   invoiceEnabled: boolean;
   lndHubEnabled: boolean;
@@ -23,7 +23,7 @@ export interface IParametersBatch {
   namePrefix: string;
   numberOfWallets: number;
   proxyUrl: string;
-  readKey?: string;
+  adminId?: string;
 }
 
 export interface IParametersLnurlW {

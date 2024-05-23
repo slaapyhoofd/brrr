@@ -8,7 +8,7 @@ export const DefaultAppState: IAppState = {
   batchRunning: false,
   currentWalletIndex: 0,
   parametersBatch: {
-    adminId: '',
+    userId: '',
     baseUrl: 'https://lnbits.yourdomain.com',
     invoiceEnabled: false,
     lndHubEnabled: true,
@@ -17,7 +17,7 @@ export const DefaultAppState: IAppState = {
     namePrefix: 'BRRR',
     numberOfWallets: 2,
     proxyUrl: 'proxy.php',
-    readKey: '',
+    adminId: '',
   },
   parametersInvoice: {
     amount: 10,

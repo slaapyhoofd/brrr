@@ -7,19 +7,19 @@ export const createWallet = async (
   ph: ProxyHandler,
 ): Promise<IWalletInfo> => {
   try {
-    const { adminId, readKey } = parametersBatch;
+    const { userId: adminUserId, adminId } = parametersBatch;
 
     // create wallet
     const responseWallet = await ph.post(
       `/usermanager/api/v1/users`,
       {
-        admin_id: adminId,
+        admin_id: adminUserId,
         wallet_name: walletName,
         user_name: window.crypto.randomUUID(),
         email: '',
         password: '',
       },
-      readKey,
+      adminId,
     );
     const walletData = await responseWallet.json();
 

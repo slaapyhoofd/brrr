@@ -9,12 +9,8 @@ export const enablePlugin = async (
 ) => {
   try {
     return ph.post(
-      `/usermanager/api/v1/extensions`,
-      {
-        userid: userId,
-        extension: extension,
-        active: true,
-      },
+      `/usermanager/api/v1/extensions?extension=${extension}&userid=${userId}&active=true`,
+      {},
       inKey,
     );
   } catch (e) {
