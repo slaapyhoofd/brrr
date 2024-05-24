@@ -1,0 +1,60 @@
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 0 0 26mm;
+    margin: 1mm;
+    height: 25.5mm;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.box img {
+    width: 22mm;
+    height: 22mm;
+}
+
+.box-tag {
+    position: absolute;
+    font-size: 8px;
+    font-family: Consolas, serif;
+    top: 23mm;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.qr fieldset {
+    margin-top: 1rem;
+}
+
+.print {
+    display: none;
+}
+
+@media print {
+    html,
+    body {
+        padding: 6mm 4mm;
+        height: 297mm;
+        width: 210mm;
+    }
+
+    .print {
+        display: block;
+    }
+
+    .do-not-print {
+        display: none;
+    }
+}
